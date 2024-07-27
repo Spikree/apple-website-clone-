@@ -8,9 +8,9 @@ const Navbar = () => {
       <nav className='flex w-full screen-max-width'>
         <img src={appleImg} alt="apple logo" width={14} height={18} />
         <div className='flex flex-1 justify-center max-sm:hidden '>
-          {navLists.map((nav,i) => (
+          {navLists.map((nav,index) => (
             <>
-              <div key={i} className='px-5 text-sm cursor-pointer text-gray hover:text-white transition-all'>
+              <div key={index} className='px-5 text-sm cursor-pointer text-gray hover:text-white transition-all'>
                 {nav}
               </div>
             </>
