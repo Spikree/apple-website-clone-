@@ -65,17 +65,19 @@ const Model = () => {
                             size={size}
                         />
 
-                        <Canvas className='w-full h-full' style={{
-                            position:'fixed',
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            overflow: 'hidden'
-                        }}
-                            eventSource = {document.getElementById('root')}
+                        <Canvas
+                            className="w-full h-full"
+                            style={{
+                                position: 'fixed',
+                                top: 0,
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                overflow: 'hidden'
+                            }}
+                            eventSource={document.getElementById('root')}
                         >
-                            <View.Port/>
+                            <View.Port />
                         </Canvas>
                     </div>
                     <div className="mx-auto w-full">
@@ -83,16 +85,16 @@ const Model = () => {
                         <div className='flex-center'>
                             <ul className='color-container'>
                                 {
-                                    models.map((item,i) => (
-                                        <li key={i} className='w-6 h-6 rounded-full mx-2 cursor-pointer' style={{backgroundColor: item.color[0]}} onClick={() => setModel(item)}/>
+                                    models.map((item, i) => (
+                                        <li key={i} className='w-6 h-6 rounded-full mx-2 cursor-pointer' style={{ backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
                                     ))
                                 }
                             </ul>
 
                             <button className='size-btn-container'>
                                 {
-                                    sizes.map(({label,value}) => (
-                                        <span key={label} className='size-btn' style={{backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
+                                    sizes.map(({ label, value }) => (
+                                        <span key={label} className='size-btn' style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white' }} onClick={() => setSize(value)}>
                                             {label}
                                         </span>
                                     ))

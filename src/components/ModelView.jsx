@@ -1,10 +1,33 @@
-import { View } from '@react-three/drei'
-import React from 'react'
+import { Html, OrbitControls, View } from '@react-three/drei'
+import * as THREE from 'three'
+import React, { Suspense } from 'react'
+import Lights from './Lights'
+import IPhone from './IPhone'
 
-const ModelView = ({index,groupRef,gsapType,controlRef,setRotationState,item,size}) => {
+const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationState, item, size }) => {
   return (
-    <View index={index} id={gsapType} className={`border-2 border-red-500 w-full h-full ${index === 2} ? 'right-[-100%] : ''`}>
-        
+    <View index={index} id={gsapType} className={` w-full h-full ${index === 2 ? 'right-[-100%]' : ''}`}>
+
+      <ambientLight intensity={0.3} />
+
+      <perspectiveCamera makeDefault position={[0, 0, 4]} />
+
+      <Lights />
+
+      <OrbitControls makeDefault ref={controlRef} enableZoom={false} enablePan={false} rotateSpeed={0.4} target={new THREE.Vector3(0,0,0)} onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}/>
+
+      <group ref={groupRef} name={`${index === 1} ? 'small' : 'large'`} position={[0,0,0]}>
+
+      <Suspense fallback={<Html>loading</Html>}>
+        <IPhone
+          scale={index === 1 ? [20, 20, 20] : [25, 25, 25]}
+          item={item}
+          size={size}
+        />
+      </Suspense>
+
+      </group>
+
     </View>
   )
 }
